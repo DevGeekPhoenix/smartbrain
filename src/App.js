@@ -42,7 +42,7 @@ class App extends Component {
     this.setState({ LinkInput: event.target.value });
   };
   Detection = () => {
-    this.setState({ imgURL: this.state.LinkInput });
+    this.setState({ ImgURL: this.state.LinkInput });
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, this.state.LinkInput)
       .then((response) => {

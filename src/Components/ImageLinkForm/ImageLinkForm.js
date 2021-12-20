@@ -1,7 +1,7 @@
 const ImageLinkForm = ({ OnLinkInputChange, Detection }) => {
   return (
     <div>
-      <p>{"This Magic will detect faces in your pictures. Giv it a try"}</p>
+      <p>{"This Magic will detect faces in your pictures. Give it a try"}</p>
       <div>
         <input onChange={OnLinkInputChange} />
         <button onClick={Detection}>Detect</button>

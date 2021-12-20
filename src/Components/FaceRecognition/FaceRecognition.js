@@ -3,16 +3,18 @@ import "./FaceRecognition.css";
 const FaceRecognition = ({ ImgURL, box }) => {
   return (
     <div>
-      <img id="inputimg" src={ImgURL} />
-      <div
-        className="boundingbox"
-        style={{
-          top: box.top_row,
-          right: box.rightCol,
-          bottom: box.bottomRow,
-          left: box.leftCol,
-        }}
-      ></div>
+      <div style={{ position: "absolute" }}>
+        <img id="inputimg" src={ImgURL} />
+        <div
+          className="boundingbox"
+          style={{
+            top: box.topRow,
+            right: box.rightCol,
+            bottom: box.bottomRow,
+            left: box.leftCol,
+          }}
+        ></div>
+      </div>
     </div>
   );
 };
