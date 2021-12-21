@@ -5,9 +5,15 @@ const SideBar = ({ onRouteChange }) => {
     <div className="sidebar">
       <div className="sidebaritems">
         <div className="userinfo">
-          <img className="logoimg" style={{ height: "150px" }} src={Logopic} />
+          <img className="logoimg" src={Logopic} />
+          <br />
+          <br />
+
           <div>{"Hi Ho3ein"}</div>
+          <br />
+
           <div>{"Your current rank is: #5"}</div>
+          <br />
         </div>
       </div>
       <button

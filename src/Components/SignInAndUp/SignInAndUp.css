@@ -81,6 +81,8 @@
 }
 .login-form .group .input,
 .login-form .group .button {
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.2), 0 17px 50px 0 rgba(0, 0, 0, 0.2);
+
   border: none;
   padding: 15px 20px;
   border-radius: 25px;
@@ -90,11 +92,14 @@
   -webkit-text-security: circle;
 }
 .login-form .group .label {
+  text-align: center;
   color: #aaa;
   font-size: 12px;
 }
 .login-form .group .button {
   background: #2d343f;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.2), 0 17px 50px 0 rgba(0, 0, 0, 0.2);
+
   cursor: pointer;
 }
 
