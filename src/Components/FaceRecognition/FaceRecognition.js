@@ -2,8 +2,8 @@ import react from "react";
 import "./FaceRecognition.css";
 const FaceRecognition = ({ ImgURL, box }) => {
   return (
-    <div>
-      <div style={{ position: "absolute" }}>
+    <div className="detectedimg">
+      <div>
         <img id="inputimg" src={ImgURL} />
         <div
           className="boundingbox"

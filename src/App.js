@@ -1,11 +1,11 @@
 import "./App.css";
-import Rank from "./Components/Rank/Rank";
+import background from "../src/Components/face (1) (2).mp4";
 import FaceRecognition from "./Components/FaceRecognition/FaceRecognition";
 import ImageLinkForm from "./Components/ImageLinkForm/ImageLinkForm";
-import Logo from "./Components/Logo/Logo";
-import Navigation from "./Components/Navigation/Navigation";
-import react, { Component } from "react";
+import { Component } from "react";
 import Clarifai from "clarifai";
+import SideBar from "./Components/SideBar/SideBar";
+import SignInAndUp from "./Components/SignInAndUp/SignInAndUp";
 
 const app = new Clarifai.App({
   apiKey: "93ced7709c8a48e8b99270c21b466389",
@@ -19,12 +19,12 @@ class App extends Component {
       LinkInput: "",
       ImgURL: "",
       box: {},
+      route: "SignInAndUp",
     };
   }
   CalcFaceLocation = (data) => {
     const clarifaiFace =
       data.outputs[0].data.regions[0].region_info.bounding_box;
-    // console.log(clarifaiFace);
     const image = document.getElementById("inputimg");
     const width = Number(image.width);
     const height = Number(image.height);
@@ -46,24 +46,33 @@ class App extends Component {
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, this.state.LinkInput)
       .then((response) => {
-        // console.log(response);
         this.displayFaceBox(this.CalcFaceLocation(response)).catch((err) =>
           console.log(err)
         );
       });
   };
 
+  onRouteChange = (route) => {
+    this.setState({ route: route });
+  };
   render() {
     return (
       <div className="App">
-        <Navigation />
-        <Logo />
-        <Rank />
-        <ImageLinkForm
-          Detection={this.Detection}
-          OnLinkInputChange={this.OnLinkInputChange}
-        />
-        <FaceRecognition box={this.state.box} ImgURL={this.state.ImgURL} />
+        <video className="videoTag" autoPlay loop muted>
+          <source src={background} type="video/mp4" />
+        </video>
+        {this.state.route === "SignInAndUp" ? (
+          <SignInAndUp onRouteChange={this.onRouteChange} />
+        ) : (
+          <div>
+            <SideBar onRouteChange={this.onRouteChange} />
+            <ImageLinkForm
+              Detection={this.Detection}
+              OnLinkInputChange={this.OnLinkInputChange}
+            />
+            <FaceRecognition box={this.state.box} ImgURL={this.state.ImgURL} />
+          </div>
+        )}
       </div>
     );
   }
